@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="hidden">
+    <div class="panel">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">◆</div>
+                <div>
+                    <h1 id="shopName">—</h1>
+                    <p class="subtitle" data-i18n="subtitle"></p>
+                </div>
+            </div>
+            <div class="top-stats">
+                <div class="stat">
+                    <span data-i18n="earned_session"></span>
+                    <strong id="earned">$0</strong>
+                </div>
+                <div class="stat">
+                    <span data-i18n="next_refresh"></span>
+                    <strong id="refreshTimer">--:--</strong>
+                </div>
+                <button id="closeBtn" class="icon-btn">✕</button>
+            </div>
+        </header>
+
+        <div class="body">
+            <section class="market">
+                <div class="toolbar">
+                    <div class="seg">
+                        <button class="seg-btn active" data-view="all" data-i18n="view_all"></button>
+                        <button class="seg-btn" data-view="owned" data-i18n="view_owned"></button>
+                    </div>
+                    <input id="search" type="text" autocomplete="off" data-i18n-placeholder="search_placeholder">
+                    <div id="ddPay" class="dd"></div>
+                    <div id="ddSort" class="dd"></div>
+                </div>
+                <div id="grid" class="grid"></div>
+            </section>
+
+            <aside class="offer">
+                <div class="offer-head">
+                    <div>
+                        <h2 data-i18n="offer_title"></h2>
+                        <span id="offerCount" class="offer-count"></span>
+                    </div>
+                    <button id="clearBtn" class="link-btn" data-i18n="offer_clear"></button>
+                </div>
+                <div id="offerList" class="offer-list"></div>
+                <div class="offer-foot">
+                    <div class="total-row">
+                        <span data-i18n="offer_total"></span>
+                        <strong id="offerTotal">$0</strong>
+                    </div>
+                    <button id="sellBtn" class="btn primary" data-i18n="sell"></button>
+                    <button id="allBtn" class="btn ghost" data-i18n="offer_all"></button>
+                </div>
+            </aside>
+        </div>
+
+        <div id="modal" class="overlay hidden">
+            <div class="sheet">
+                <div class="sheet-head">
+                    <div class="sh-img"><img id="mImg" alt=""></div>
+                    <div class="sh-text">
+                        <h2 id="mLabel"></h2>
+                        <span id="mPay" class="pay-badge clean"></span>
+                    </div>
+                    <button id="mClose" class="icon-btn small">✕</button>
+                </div>
+
+                <div class="det-price" id="mPrice">$0</div>
+                <div class="ref-row">
+                    <span data-i18n="market_rate"></span>
+                    <strong id="mRef">$0</strong>
+                    <span id="mDelta" class="delta same">0%</span>
+                </div>
+
+                <div class="scale-wrap">
+                    <div class="scale">
+                        <div class="marker" id="mMarker">
+                            <div class="marker-tag" id="mMarkerLabel">$0</div>
+                        </div>
+                    </div>
+                    <div class="scale-labels">
+                        <div><span data-i18n="min"></span> <strong id="mMinV">$0</strong></div>
+                        <div><strong id="mMaxV">$0</strong> <span data-i18n="max"></span></div>
+                    </div>
+                </div>
+
+                <div class="det-grid">
+                    <div class="cell">
+                        <span data-i18n="tier_label"></span>
+                        <strong id="mTier">—</strong>
+                    </div>
+                    <div class="cell">
+                        <span data-i18n="trend_label"></span>
+                        <strong id="mTrend">—</strong>
+                    </div>
+                    <div class="cell">
+                        <span data-i18n="owned"></span>
+                        <strong id="mOwned">0</strong>
+                    </div>
+                </div>
+
+                <div class="qty-block">
+                    <span class="block-label" data-i18n="quantity"></span>
+                    <div class="qty-row">
+                        <button id="mMinus" class="step">−</button>
+                        <input id="mQty" type="number" min="1" value="1">
+                        <button id="mPlus" class="step">+</button>
+                        <button id="mMaxBtn" class="max-btn" data-i18n="max_btn"></button>
+                    </div>
+                    <div class="inlist" id="mInOffer"></div>
+                </div>
+
+                <div class="sum">
+                    <div class="sum-row">
+                        <span data-i18n="unit_price"></span>
+                        <span id="mUnit">$0</span>
+                    </div>
+                    <div class="sum-row big">
+                        <span data-i18n="total"></span>
+                        <strong id="mTotal">$0</strong>
+                    </div>
+                </div>
+
+                <div class="sheet-actions">
+                    <button id="mCancel" class="btn ghost" data-i18n="cancel"></button>
+                    <button id="mAdd" class="btn primary"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="success" class="success hidden">
+            <div class="check">
+                <svg viewBox="0 0 52 52">
+                    <circle class="ring" cx="26" cy="26" r="24" fill="none"></circle>
+                    <path class="tick" d="M14 27 L22 35 L38 18" fill="none"></path>
+                </svg>
+            </div>
+            <div class="s-title" data-i18n="sold_title"></div>
+            <div class="s-sub" id="sSub"></div>
+            <div class="s-rec" id="sRec"></div>
+        </div>
+
+        <div id="toasts"></div>
+    </div>
+</div>
+
+<div id="receiptRoot" class="receipt-root hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

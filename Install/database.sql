@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS len_sellpoints_receipts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    number VARCHAR(6) NOT NULL UNIQUE,
+    owner VARCHAR(100) NOT NULL,
+    data LONGTEXT NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX (owner)
+);
